@@ -1,0 +1,238 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=latex 2017.11.12)  12 NOV 2017 12:04
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**index.dtx
+(./index.dtx
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 15 language(s) loaded.
+File: index.dtx 1995/09/28 v4.1beta Improved index support (dmj)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ltxdoc.cls
+Document Class: ltxdoc 2015/03/26 v2.0w Standard LaTeX documentation class
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/doc.sty
+Package: doc 2014/09/29 v2.1e Standard LaTeX documentation package (FMi)
+\c@StandardModuleDepth=\count87
+\guard@level=\count88
+\MacrocodeTopsep=\skip43
+\MacroIndent=\dimen103
+\macro@cnt=\count89
+\MacroTopsep=\skip44
+\index@excludelist=\toks14
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2015/08/19 v1.8n multicolumn formatting (FMi)
+\c@tracingmulticols=\count90
+\mult@box=\box26
+\multicol@leftmargin=\dimen104
+\c@unbalance=\count91
+\c@collectmore=\count92
+\doublecol@number=\count93
+\multicoltolerance=\count94
+\multicolpretolerance=\count95
+\full@width=\dimen105
+\page@free=\dimen106
+\premulticols=\dimen107
+\postmulticols=\dimen108
+\multicolsep=\skip45
+\multicolbaselineskip=\skip46
+\partial@page=\box27
+\last@line=\box28
+\maxbalancingoverflow=\dimen109
+\mult@rightbox=\box29
+\mult@grightbox=\box30
+\mult@gfirstbox=\box31
+\mult@firstbox=\box32
+\@tempa=\box33
+\@tempa=\box34
+\@tempa=\box35
+\@tempa=\box36
+\@tempa=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\c@columnbadness=\count96
+\c@finalcolumnbadness=\count97
+\last@try=\dimen110
+\multicolovershoot=\dimen111
+\multicolundershoot=\dimen112
+\mult@nat@firstbox=\box50
+\colbreak@box=\box51
+\mc@col@check@num=\count98
+)
+\IndexMin=\dimen113
+\c@IndexColumns=\count99
+\GlossaryMin=\dimen114
+\c@GlossaryColumns=\count100
+\check@sum=\count101
+\bslash@cnt=\count102
+\wrong@table=\toks15
+\c@CodelineNo=\count103
+))
+\@indexfile=\write3
+\openout3 = `index.idx'.
+
+
+Writing index file index.idx
+(./index.aux)
+\openout1 = `index.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+Package doc Info: Made | a short reference for \verb on input line 134.
+ (./index.dtx
+***************************
+* Character table correct *
+***************************
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <17.28> on input line 154.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 154.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 154.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 154.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 154.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 158.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 199.
+[1
+
+] [2]
+
+LaTeX Warning: Marginpar on page 3 moved.
+
+[3]
+
+LaTeX Warning: Marginpar on page 4 moved.
+
+
+LaTeX Warning: Marginpar on page 4 moved.
+
+[4]
+Overfull \hbox (28.88725pt too wide) in paragraph at lines 437--443
+\OT1/cmr/m/n/10 in-stead of writ-ing `[]\OT1/cmtt/m/n/10 \index{sin@$\sin$}$\si
+n$\OT1/cmr/m/n/10 ', one could write `[]\OT1/cmtt/m/n/10 index*{sin@$\sin$}\OT1
+/cmr/m/n/10 '.
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 467.
+
+Overfull \hbox (0.5877pt too wide) in paragraph at lines 467--467
+ [][]\OT1/cmtt/m/n/9 \ProvidesPackage{index}[2004/01/20 v4.2beta Improved index
+ support (dmj)] 
+ []
+
+[5] [6] [7] [8] [9]
+Overfull \hbox (3.07333pt too wide) in paragraph at lines 788--792
+[]\OT1/cmr/m/n/10 The fol-low-ing are adapted from \OT1/cmtt/m/n/10 makeidx.sty
+\OT1/cmr/m/n/10 , v2.09 $\OMS/cmsy/m/n/10 h$\OT1/cmr/m/n/10 21 Oct 91$\OMS/cmsy
+/m/n/10 i$\OT1/cmr/m/n/10 . \OT1/cmtt/m/n/10 \index@prologue
+ []
+
+[10] [11]
+Overfull \hbox (19.48749pt too wide) in paragraph at lines 879--879
+ [][]                \OT1/cmtt/m/n/9 \noexpand\@input@{\jobname.\expandafter\@s
+econd\@tempa\@nil}% 
+ []
+
+
+Overfull \hbox (0.62932pt too wide) in paragraph at lines 925--932
+\OT1/cmr/m/n/10 the pream-ble of one's doc-u-ment, and never want to turn it of
+f. \OT1/cmtt/m/n/10 \shortindexingoff
+ []
+
+[12] [13] [14] [15] [16]
+Overfull \hbox (8.75566pt too wide) in paragraph at lines 1194--1196
+[]\OT1/cmr/m/n/10 added sup-port for \OT1/cmtt/m/n/10 \index*\OT1/cmr/m/n/10 , 
+proof-mode, \OT1/cmtt/m/n/10 \shortindexingon
+ []
+
+
+Overfull \hbox (10.26703pt too wide) in paragraph at lines 1233--1239
+[]\OT1/cmr/m/n/10 Added \OT1/cmtt/m/n/10 \disableindex \OT1/cmr/m/n/10 com-mand
+. Added \OT1/cmtt/m/n/10 \newindex
+ []
+
+
+Overfull \hbox (74.8083pt too wide) in paragraph at lines 1248--1254
+\OT1/cmr/m/n/10 of \OT1/cmtt/m/n/10 \shortindexingoff\OT1/cmr/m/n/10 . Thanks t
+o Hen-drik G. Seliger $\OMS/cmsy/m/n/10 h$\OT1/cmtt/m/n/10 hank@Blimp.automat.u
+ni-essen.de$\OMS/cmsy/m/n/10 i$
+ []
+
+
+Overfull \hbox (2.04579pt too wide) in paragraph at lines 1248--1254
+\OT1/cmr/m/n/10 for this bug re-port. Also added re-def-i-ni-tions of \OT1/cmtt
+/m/n/10 \@leftmark \OT1/cmr/m/n/10 and \OT1/cmtt/m/n/10 \@rightmark
+ []
+
+
+Overfull \hbox (40.97084pt too wide) in paragraph at lines 1256--1266
+\OT1/cmr/m/n/10 Schr^^?oder and Ste-fan Hein-rich H^^?oning $\OMS/cmsy/m/n/10 h
+$\OT1/cmtt/m/n/10 hoening@pool.informatik.rwth-aachen.de$\OMS/cmsy/m/n/10 i$\OT
+1/cmr/m/n/10 .
+ []
+
+[17] [18] [19]
+
+! Package doc Error: Checksum not passed (755<>763).
+
+See the doc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1396 % \Finale
+                
+? 
+)
+No file index.ind.
+[20] (./index.aux) ) 
+Here is how much of TeX's memory you used:
+ 646 strings out of 494439
+ 7876 string characters out of 6170796
+ 74101 words of memory out of 5000000
+ 4128 multiletter control sequences out of 15000+600000
+ 12699 words of font info for 45 fonts, out of 8000000 for 9000
+ 288 hyphenation exceptions out of 8191
+ 30i,8n,21p,235b,658s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on index.dvi (20 pages, 56596 bytes).

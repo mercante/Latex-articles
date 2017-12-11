@@ -1,0 +1,197 @@
+%%---------- Quarto Capitulo ----------
+\chapter{Análise dos Resultados}
+\label{cap4}
+
+A segmentação das imagens do ``dataset'' Cornelio4k pode ser observada nas figuras \ref{cornelio4k1}, \ref{cornelio4k2} e \ref{cornelio4k3}. Nas imagens da direita temos a máscara gerada pelo algoritmo SubSENSE e à esquerda a imagem de entrada. Estas máscaras foram utilizadas para medir a acurácia da segmentação comparando-as com seu  arquivo \textit{groundtruth} correspondente, como pode ser visto na figura \ref{cornelio4k4}.
+
+\begin{figure}[!htb]
+	\centering
+	%\begin{measuredfigure}
+	\caption{Resultado da segmentação utilizando o algoritmo SubSENSE - 1.\label{cornelio4k1}}
+	\includegraphics[height=4cm]{./figuras/in000047.png} \quad
+	\includegraphics[height=4cm]{./figuras/bin000047.png}\newline
+	\fonte{Autoria própria}
+	%\end{measuredfigure}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	%\begin{measuredfigure}
+	\caption{Resultado da segmentação utilizando o algoritmo SubSENSE - 2.\label{cornelio4k2}}
+	\includegraphics[height=4cm]{./figuras/in000050.png} \quad
+	\includegraphics[height=4cm]{./figuras/bin000050.png}\newline
+	\fonte{Autoria própria}
+	%\end{measuredfigure}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	%\begin{measuredfigure}
+	\caption{Resultado da segmentação utilizando o algoritmo SubSENSE - 3.\label{cornelio4k3}}
+	\includegraphics[height=4cm]{./figuras/input11.png} \quad
+	\includegraphics[height=4cm]{./figuras/result11.png}\newline
+	\fonte{Autoria própria}
+	%\end{measuredfigure}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	%\begin{measuredfigure}
+	\caption{Resultado da segmentação e seu \textit{groundtruth} correspondente.\label{cornelio4k4}}
+	\includegraphics[height=4cm]{./figuras/result11.png} \quad
+	\includegraphics[height=4cm]{./figuras/gt000051.png}\newline
+	\fonte{Autoria própria}
+	%\end{measuredfigure}
+\end{figure}
+
+\newpage
+
+Com o \textit{script} do MATLAB para obtenção de métricas de acurácia encontrado no site changedetection.net, foram obtidas as métricas do quadro \ref{metricascornelio}. Este quadro é resultado de uma análise do conjunto como um todo, mais à frente serão apresentados os resultados de cada resolução individual. É relevante destacar o F-Measure obtido de 0,7938, que é um resultado bastante satisfatório quando levado em conta que o algoritmo SubSENSE, utilizado para a extração dos elementos de interesse, foi aplicado com os parâmetros sugeridos por \citeonline{Charles2015}.
+
+\begin{quadro}[!htb]
+	\centering
+	\caption{Métricas do dataset Cornelio4k}
+	\label{metricascornelio}
+	\begin{tabular}{|c|c|c|c|c|c|c|c|}
+		\hline
+		\textbf{Dataset} & \textbf{Recall} & \textbf{Specificity} & \textbf{FPR} & \textbf{FNR} & \textbf{PWC} & \textbf{Precision} & \textbf{FMeasure} \\ \hline
+		Cornelio4k       & 0.7864          & 0.9903               & 0.0097       & 0.2136       & 1.9394       & 0.8020             & 0.7938            \\ \hline
+	\end{tabular}
+	\fonte{Autoria própria}
+\end{quadro}
+
+Enquanto o algoritmo era executado, foram obtidos os valores de Tempo de Execução, Memória RAM e CPU ($\%$ processor time), discutidos na seção anterior deste trabalho. No quadro \ref{quadroperformancetotal} temos os valores totais medidos pelo ``Monitor de Desempenho'' do Windows. 
+
+\begin{quadro}[!htb]
+	\centering
+	\caption{Valores do teste de performance}
+	\label{quadroperformancetotal}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{Input} & \textbf{\begin{tabular}[c]{@{}c@{}}Tempo de\\   Execução (s)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Memória RAM\\   (MB)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}CPU\\   (\%processortime)\end{tabular}} \\ \hline
+		Cornelio384    & 57,030                                                                     & 68,728                                                                & 87,654                                                                     \\ \hline
+		Cornelio768    & 832,867                                                                    & 209,632                                                               & 95,997                                                                     \\ \hline
+		Cornelio1152   & 1918,954                                                                   & 443,470                                                               & 97,851                                                                     \\ \hline
+		Cornelio1536   & 2989,303                                                                   & 769,987                                                               & 98,966                                                                     \\ \hline
+		Cornelio1920   & 6415,051                                                                   & 1193,885                                                              & 97,889                                                                     \\ \hline
+		Cornelio2304   & 7799,348                                                                   & 1707,796                                                              & 98,003                                                                     \\ \hline
+		Cornelio2688   & 9065,279                                                                   & 2316,898                                                              & 99,232                                                                     \\ \hline
+		Cornelio3072   & 11083,866                                                                  & 3022,250                                                              & 99,648                                                                     \\ \hline
+		Cornelio3456   & 16549,882                                                                  & 3729,219                                                              & 99,170                                                                     \\ \hline
+		Cornelio3840   & 17748,630                                                                  & 4598,337                                                              & 99,430                                                                     \\ \hline
+	\end{tabular}
+\fonte{Autoria Própria}
+\end{quadro}
+
+Para uma melhor visualização, os gráficos ilustrados nas figuras \ref{performancetotal1}, \ref{performancememoria}, \ref{performancetempo} e \ref{performancecpu} possuem os valores obtidos. Como podemos observar, embora a memória e o tempo de execução cresçam gradativamente conforme a resolução aumenta, o CPU($\%$ processor time) mantém-se constante a partir da segunda resolução. Com isto podemos tirar uma conclusão de que uma maior quantidade de memória é essencial quando se trabalha com imagens de alta resolução, enquanto o processador utilizado neste trabalho se mostrou suficiente nos experimentos utilizados.   
+
+
+\begin{quadro}[!htb]
+	\centering
+	\caption{Valores em porcentagem da razão de uma resolução em relação à sua anterior }
+	\label{performancerazao}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{Input} & \textbf{\begin{tabular}[c]{@{}c@{}}Tempo de\\   Execução (s)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Memória RAM\\   (MB)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}CPU\\   (\%processortime)\end{tabular}} \\ \hline
+		R1             & 1360\%                                                                     & 205\%                                                                 & 10\%                                                                       \\ \hline
+		R2             & 130\%                                                                      & 112\%                                                                 & 2\%                                                                        \\ \hline
+		R3             & 56\%                                                                       & 74\%                                                                  & 1\%                                                                        \\ \hline
+		R4             & 115\%                                                                      & 55\%                                                                  & -1\%                                                                       \\ \hline
+		R5             & 22\%                                                                       & 43\%                                                                  & 0\%                                                                        \\ \hline
+		R6             & 16\%                                                                       & 36\%                                                                  & 1\%                                                                        \\ \hline
+		R7             & 22\%                                                                       & 30\%                                                                  & 0\%                                                                        \\ \hline
+		R8             & 49\%                                                                       & 23\%                                                                  & 0\%                                                                        \\ \hline
+		R9             & 7\%                                                                        & 23\%                                                                  & 0\%                                                                        \\ \hline
+		\textbf{Total} & 1778\%                                                                     & 601\%                                                                 & 13\%                                                                       \\ \hline
+	\end{tabular}
+\fonte{Autoria Própria}
+\end{quadro}
+
+
+A partir dos dados do quadro \ref{quadroperformancetotal}, foi gerado outro o \ref{performancerazao}. Este contem as porcentagens de variação entre cada uma das resoluções. Por exemplo, a razão do \textit{input} Cornelio768 pela Cornelio384 é chamada de R1, e assim por diante. Novamente, vemos que o tempo de execução e a memória são as duas variáveis que sofrem maior variação entre as resoluções.
+
+
+\begin{figure}[!htb]
+	%\captionsetup{width=0.97\textwidth}
+	\caption[Gráfico performance total]{Gráfico dos resultados obtidos da performance total.}
+	\label{performancetotal1}
+	\fbox{\begin{minipage}{1.0\linewidth}\centering
+			\includegraphics[width=1.0\textwidth]{./figuras/performance-total.jpg} \end{minipage}}% <- formatos PNG, JPG e PDF
+	\fonte{Autoria própria}
+\end{figure}
+
+Os quadros \ref{metricasresolucao} e \ref{razaometricas} mostram as métricas de acurácia obtidos, em valores absolutos e a razão de uma resolução para outra, respectivamente. No quadro \ref{razaometricas}, a linha em vermelho destaca onde houve o maior aumento na acurácia, que foi do input Cornelio1536 em relação ao Cornelio1152. Se observarmos os outros gráficos de consumo de recursos computacionais anteriormente discutidos, podemos chegar à conclusão que à partir desta resolução os resultados de acurácia não justificam o investimento adicional em recursos computacionais para processar imagens obtidas em resolução superior. 
+
+\begin{quadro}[!htb]
+	\centering
+	\caption{Métricas por resolução}
+	\label{metricasresolucao}
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		\textbf{Input} & \textbf{Recall} & \textbf{Specificity} & \textbf{FPR} & \textbf{PWC} & \textbf{Precision} & \textbf{FMeasure} \\ \hline
+		Cornelio384    & 0,6680          & 0,9884               & 0,0116       & 2,6853       & 0,7422             & 0,7032            \\ \hline
+		Cornelio768    & 0,7357          & 0,9878               & 0,0122       & 2,4034       & 0,7486             & 0,7421            \\ \hline
+		Cornelio1152   & 0,7551          & 0,9836               & 0,0164       & 2,7280       & 0,6972             & 0,7250            \\ \hline
+		Cornelio1536   & 0,8185          & 0,9912               & 0,0088       & 1,7043       & 0,8228             & 0,8206            \\ \hline
+		Cornelio1920   & 0,8179          & 0,9913               & 0,0087       & 1,6915       & 0,8252             & 0,8216            \\ \hline
+		Cornelio2304   & 0,8175          & 0,9915               & 0,0085       & 1,6733       & 0,8275             & 0,8225            \\ \hline
+		Cornelio2688   & 0,8141          & 0,9919               & 0,0081       & 1,6523       & 0,8347             & 0,8243            \\ \hline
+		Cornelio3072   & 0,8129          & 0,9922               & 0,0078       & 1,6341       & 0,8388             & 0,8256            \\ \hline
+		Cornelio3456   & 0,8107          & 0,9926               & 0,0074       & 1,6092       & 0,8449             & 0,8275            \\ \hline
+		Cornelio3840   & 0,8131          & 0,9923               & 0,0077       & 1,6129       & 0,8389             & 0,8258            \\ \hline
+	\end{tabular}
+\fonte{Autoria própria}
+\end{quadro}
+
+
+\begin{quadro}[!htb]
+	\centering
+	\caption{Razão das métricas por resolução}
+	\label{razaometricas}
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		\textbf{Input}            & \textbf{Recall}                 & \textbf{Specificity}            & \textbf{FPR}                      & \textbf{PWC}                      & \textbf{Precision}               & \textbf{Fmeasure}                \\ \hline
+		R1                        & 10,1230\%                       & -0,0590\%                       & 5,0243\%                          & -10,4953\%                        & 0,8664\%                         & 5,5352\%                         \\ \hline
+		R2                        & 2,6383\%                        & -0,4267\%                       & 34,6014\%                         & 13,5026\%                         & -6,8736\%                        & -2,3072\%                        \\ \hline
+		{\color[HTML]{CB0000} R3} & {\color[HTML]{CB0000} 8,4018\%} & {\color[HTML]{CB0000} 0,7706\%} & {\color[HTML]{CB0000} -46,2258\%} & {\color[HTML]{CB0000} -37,5244\%} & {\color[HTML]{CB0000} 18,0159\%} & {\color[HTML]{CB0000} 13,1963\%} \\ \hline
+		R4                        & -0,0676\%                       & 0,0158\%                        & -1,7795\%                         & -0,7517\%                         & 0,2933\%                         & 0,1121\%                         \\ \hline
+		R5                        & -0,0483\%                       & 0,0179\%                        & -2,0481\%                         & -1,0747\%                         & 0,2815\%                         & 0,1156\%                         \\ \hline
+		R6                        & -0,4177\%                       & 0,0427\%                        & -4,9866\%                         & -1,2559\%                         & 0,8617\%                         & 0,2140\%                         \\ \hline
+		R7                        & -0,1558\%                       & 0,0255\%                        & -3,1391\%                         & -1,1052\%                         & 0,4925\%                         & 0,1633\%                         \\ \hline
+		R8                        & -0,2607\%                       & 0,0372\%                        & -4,7226\%                         & -1,5190\%                         & 0,7305\%                         & 0,2247\%                         \\ \hline
+		R9                        & 0,2908\%                        & -0,0267\%                       & 3,5590\%                          & 0,2251\%                          & -0,7074\%                        & -0,2005\%                        \\ \hline
+		\textbf{Total}            & 20,5037\%                       & 0,3973\%                        & -19,7169\%                        & -39,9985\%                        & 13,9607\%                        & 17,0534\%                        \\ \hline
+	\end{tabular}
+\fonte{Autoria Própria}
+\end{quadro}
+
+\begin{figure}[!htb]
+	%\captionsetup{width=0.97\textwidth}
+	\caption[Gráfico performance memória]{Gráfico dos resultados obtidos da performance da memória.}
+	\label{performancememoria}
+	\fbox{\begin{minipage}{1.0\linewidth}\centering
+			\includegraphics[width=1.0\textwidth]{./figuras/performance-memoria.jpg} \end{minipage}}% <- formatos PNG, JPG e PDF
+	\fonte{Autoria própria}
+\end{figure}
+
+\begin{figure}[!htb]
+	%\captionsetup{width=0.97\textwidth}
+	\caption[Gráfico performance cpu]{Gráfico dos resultados obtidos da performance do cpu.}
+	\label{performancecpu}
+	\fbox{\begin{minipage}{1.0\linewidth}\centering
+			\includegraphics[width=1.0\textwidth]{./figuras/performance-cpu.jpg} \end{minipage}}% <- formatos PNG, JPG e PDF
+	\fonte{Autoria própria}
+\end{figure}
+
+\begin{figure}[!htb]
+	%\captionsetup{width=0.97\textwidth}
+	\caption[Gráfico performance cpu]{Gráfico dos resultados obtidos da performance em relação ao tempo.}
+	\label{performancetempo}
+	\fbox{\begin{minipage}{1.0\linewidth}\centering
+			\includegraphics[width=1.0\textwidth]{./figuras/performance-tempo.jpg} \end{minipage}}% <- formatos PNG, JPG e PDF
+	\fonte{Autoria própria}
+\end{figure}
+
+
+
+

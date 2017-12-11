@@ -1,0 +1,226 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------- Segundo Capitulo ----------
+\chapter{Fundamentação Teórica}
+\label{chap:fundamentacao}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Neste capítulo, serão apresentados os principais conceitos sobre visão computacional, o processo de extração de elementos de interesse de vídeos, uma visão detalhada sobre o algoritmo SubSENSE além dos trabalhos relacionados com a presente proposta.
+
+\section{Visão Computacional}
+
+Segundo \citeonline{gonzalez2004digital}, a visão computacional está diretamente relacionada com o processamento de imagens, porém diferem em alguns aspectos. A correlação entre ambas as áreas, segundo o autor, pode ser definida considerando três níveis no espectro que vai do processamento de imagens até a visão computacional.
+
+Os processos de baixo-nível envolvem operações primitivas, tais como a redução de ruído ou melhoria no contraste de uma imagem. O segundo nível, ao qual pertencem os processos de nível-médio, são operações do tipo segmentação (particionamento da imagem em regiões) ou classificação (reconhecimento dos objetos na imagem). Os processos que pertencem ao alto nível estão relacionados com as tarefas de cognição que estão associadas com a visão humana \cite{gonzalez2004digital}. 
+
+Em outras palavras, o processamento de imagens é um processo no qual a entrada do sistema é uma imagem e a saída é um conjunto de valores numéricos, que podem ou não compor uma outra imagem. A visão computacional, procura emular a visão humana, também possui como entrada uma imagem, no entanto, a saída é uma interpretação da imagem como um todo, ou parcialmente \cite{marengoni2009tutorial}.
+
+ Na Figura \ref{visao1} pode ser visualizada um exemplo de aplicação da visão computacional em que o sistema faz o reconhecimento de faixas de pedestres em uma imagem.
+ 
+\begin{figure}[!htb]
+	%\captionsetup{width=0.97\textwidth}
+	\caption[Visão Computacional]{Visão computacional em um sistema de reconhecimento de faixas de pedestres.}
+	\label{visao1}
+	\fbox{\begin{minipage}{0.97\linewidth}\centering
+			\includegraphics[width=0.7\textwidth]{./figuras/visao1.PNG} \end{minipage}}% <- formatos PNG, JPG e PDF
+	\fonte{\cite{sousa2012uso}}
+\end{figure}
+
+\subsection{Extração de Elementos de Interesse}
+
+A segmentação (extração de elementos de interesse em imagens ou vídeos) é uma área de estudo da indústria de vídeo desde o começo do século 20~\cite{williams1918method}. Muitas das aplicações nessa área geralmente extraem das cenas os elementos de interesse (geralmente pessoas) de seu fundo original, com o objetivo de criar um novo cenário em que o elemento extraído é inserido \cite{williams1918method,vlahos1978comprehensive,vlahos1963composite}.
+
+Os métodos mais tradicionais assumem que o vídeo foi capturado em um ambiente controlado, com um fundo de uma única cor e iluminação disposta de tal forma que a cor desse fundo seja mantida uniforme (Figura \ref{chromakey1}).  Desse modo, a segmentação pode ser feita em tempo real e com baixa taxa de erro ~\cite{mishima1994soft,gibbs1998virtual,vlahos1978comprehensive}.
+
+\begin{figure}[!htb]
+	%\captionsetup{width=0.97\textwidth}
+	\caption[Exemplo Chromakey]{Exemplo de extração do elemenbto de interesse e adição de um fundo artificial em uma imagem com fundo uniforme.}
+	\label{chromakey1}
+	\fbox{\begin{minipage}{0.97\linewidth}\centering
+			\includegraphics[width=1.0\textwidth]{./figuras/chroma.PNG} \end{minipage}}% <- formatos PNG, JPG e PDF
+	\fonte{\cite{chromakey}}
+\end{figure}
+
+Desde a década de 80, a tecnologia necessária e os algoritmos de extração de elementos de interesse têm sido aprimorados de tal modo que novos métodos são capazes de extrair elementos não apenas em tempo real mas também de imagens naturais (sem uma cor uniforme de fundo) foram desenvolvidos~\cite{criminisi2006bilayer}. As novas aplicações que passaram a utilizar esses métodos são várias, como as videoconferências (ou \textit{videochats}) em que os quadros são processados e o fundo original é substituído antes de a imagem ser enviada a um usuário remoto \cite{sun2006background,yin2011bilayer,yin2007tree,wang2010tofcut}.
+
+A extração de elementos de interesse de quadros de vídeo também é uma tarefa necessária em diversas aplicações voltadas para segurança por vídeo~\cite{stauffer1999adaptive}. Exemplos de aplicações nessa área são a detecção de quedas de pessoas, a contagem de veículos em rodovias, a detecção de acidentes etc. A segmentação do quadro de vídeo é a primeira tarefa a ser executada em sistemas desse tipo. A Figura~\ref{seg} mostra uma cena típica de uma aplicação de segurança por vídeo e a máscara gerada (contendo o elemento de interesse) pelo algoritmo de segmentação. 
+
+\begin{figure}[!htb]
+	%\captionsetup{width=0.97\textwidth}
+	\caption[Aplicação de segurança por vídeo]{Cena de uma aplicação de segurança por vídeo voltada para contar veículos em rodovias e a máscara gerada pelo algoritmo de segmentação.}
+	\label{seg}
+	\fbox{\begin{minipage}{0.97\linewidth}\centering
+			\includegraphics[width=0.6\textwidth]{./figuras/seg.PNG} \end{minipage}}% <- formatos PNG, JPG e PDF
+	\fonte{\cite{BGSLIBRARY}}
+\end{figure}
+
+
+\section{Métodos de extração de elementos de interesse}
+
+A separação entre o fundo da imagem e o elemento de interesse é um passo necessário em muitas aplicações na área da visão computacional. Muitos novos algoritmos, baseados em diferentes abordagens, são apresentados e podem ser encontrados na literatura. Segundo \citeonline{bouwmans2012background}, a maioria das soluções compartilham um mesmo esquema básico:
+
+\begin{itemize}
+	\item Inicialização do fundo: neste passo, o algoritmo tem como objetivo criar um modelo do fundo com base em um número de quadros da imagem. Este modelo pode ser criado de vários métodos (estatístico, fuzzy, inspirado em redes neurais).
+	\item Detecção do fundo: nos próximos quadros, o algoritmo irá realizar uma comparação entre o modelo criado e a imagem atual. A subtração resultará no reconhecimento do fundo da imagem.
+	\item Manutenção do modelo do fundo: um processo contínuo que visa atualizar o modelo criado na fase de inicialização, analisando as imagens ao decorrer do tempo e identificando como o fundo da imagem está mudando.
+\end{itemize}
+
+No trabalho de \citeonline{Sobral20144}, os algoritmos que representam o estado-da-arte são classificados em quatro grupos: básicos, estatísticos, fuzzy, e de redes neurais. Os métodos básicos são aqueles que não utilizam modelos estatísticos, fuzzy ou redes neurais. A extração de elementos de interesse consiste em criar um modelo para o fundo da imagem. Isso pode ser feito, por exemplo, ao se definir uma imagem do fundo sem nenhum objeto em movimento. A partir desse modelo, é feita uma análise do quadro atual, com base na comparação com o quadro a imagem de fundo. Essa abordagem é chamada de \sigla{DEQ}{Diferença Estática de Quadros}. A Figura \ref{static1} mostra exemplos de um quadro atual e do fundo estático capturado no início do processo \cite{Sobral20144}. 
+
+\begin{figure}[!htb]
+	%\captionsetup{width=0.97\textwidth}
+	\caption[Processamento de imagem]{Quadro de vídeo sendo processado e imagem capturada do fundo (sem o elemento de interesse).}
+	\label{static1}
+	\fbox{\begin{minipage}{0.97\linewidth}\centering
+			\includegraphics[width=0.7\textwidth]{./figuras/static.PNG} \end{minipage}}% <- formatos PNG, JPG e PDF
+	\fonte{\cite{sousa2012uso}}
+\end{figure}
+
+\section{Método adotado: SubSENSE}
+
+Após uma análise dos métodos de segmentação de elementos de interesse da presentes na \acron{BGSLIBRARY}{Background Substraction Library} juntamente com os resultados do site \abrevi{CDnet}{Changedetection}\footnote{changedetection.net} foi escolhido o método \acron{SubSENSE}{``Self-Balanced SENsitivity SEgmenter''} \cite{Charles2015}. Nesta seção serão abordados as características principais do SubSENSE que o fizeram ser escolhido como algoritmo de estudo e do conjunto de dados utilizado: o \textit{dataset} CDnet  2012. 
+
+\subsection{Método SuBSENSE: Teoria}
+
+O método SubSENSE é uma adaptação e integração de recursos do \sigla{LBSP}{Local Binary Similarity Pattern} (em portugês ``Padrões locais binários de similaridade"), um método que utiliza a distância de Hamming para detecção sutis no cenário em questão, proposto por \citeonline{bilodeau2013change} e demonstrado mais eficaz que detecção de mudança baseada comparações de cores. Este método é utilizado para criação de um modelo de fundo não paramétrico que por sua vez é ajustado automaticamente utilizando repetições baseadas em \textit{feedback} a nível de pixel. 
+
+O processo de criação deste modelo é representado na figura \ref{lbsp12}, que é explicada pelos seguintes passos:
+
+\begin{itemize}
+	\item No quadro (a) é definida uma string binária que é utilizada como referência do que é o fundo da imagem.
+	\item No quadro seguinte é feita a comparação da mesma região, e como o número de acertos ficou acima de um número pré-definido no momento da criação do modelo, o local ainda é considerado fundo.
+	\item No quadro da imagem (c) o número de acertos ficou abaixo do número pré-definido, portanto sendo classificado como objeto de interesse.
+\end{itemize}
+
+\begin{figure}[!htb]
+	%\captionsetup{width=0.97\textwidth}
+	\caption[Classificação LBSP]{Processo de classificação LBSP.}
+	\label{lbsp12}
+	\fbox{\begin{minipage}{0.75\linewidth}\centering
+			\includegraphics[width=0.75\textwidth]{./figuras/lbspexemplo.PNG} \end{minipage}}% <- formatos PNG, JPG e PDF
+	\fonte{\cite{Charles2015}}
+\end{figure}
+
+
+ Já na equação \ref{lbspequation}, temos $i_{x}$ que é a ``referência central''  e corresponde à intensidade do pixel localizado em x, $i_{p}$ corresponde à intensidade do vizinho \textit{p}th no padrão pré-definido ( uma matriz $5x5$, por exemplo), e $T_{r}$ é o \textit{threshold} (em português ``limiar'') interno de similaridade, fixado entre 0 e 1. Esta equação tem como resultado uma distância entre os \textit{pixels} $i_{x}$ e $i_{p}$ e seu resultado é utilizado na equação \ref{objetodeinteresse}. 
+ 
+ 
+ \begin{equation}
+ \label{lbspequation}
+ d(i_{p},i_{x}) = \left\{\begin{matrix}
+ 1 & se & \left | i_{p} - i_{x} \right | & \leq T_{r}\cdot i_{x}\\ 
+ 0 & caso \: contr\acute{a}rio 
+ \end{matrix}\right.
+ \end{equation}
+ 
+ A equação \ref{foreground} define B, que representa todos os \textit{pixels} do \textit{background} ( o valor B(x) representa um pixel da imagem ) $B_{1}(x)$, $B_{2}(x)$,..., representam amostras do background
+ em um determinado tempo t. Estas amostras são comparadas com seus respectivos quadros observados no tempo t em que elas foram coletadas, denotado por $I_{t}(x)$, para realizar a classificação do pixel na coordenada x como objeto de interesse (1) ou fundo (0), conforme mostrado na equação \ref{objetodeinteresse}.
+ 
+
+\begin{equation}
+B(x)=\left \{ B_{1},B_{2},_{\cdots},B_{N}(x)  \right \}
+\label{foreground}
+\end{equation}
+
+Na esquação \ref{objetodeinteresse}, é calculada a distância de cada uma das n amostras com o pixel observado no tempo t (é proposto que sejam usadas entre 35 e 50 amostras). R é o valor da distância máxima permitida de \textit{threshold}. Um R pequeno significa que o modelo tem que ser muito preciso para classificar pixels como fundo. Por outro lado, um R grande leva à maior resistência contra mudanças irrelevantes, porém torna mais difícil a detecção de objetos de interesse muito semelhantes ao fundo. Se todas as comparações forem verdadeiras, o pixel é definido como 1. Em outras palavras, o pixel x da imagem atual é similar ao pixel do modelo do fundo que o sistema mantém.
+
+
+ \begin{equation}
+S_{t} (x) = \left\{\begin{matrix}
+1 \: \: se  & \# \left \{  dist\left ( I_{t}\left ( x \right ), B_{n}(x) \right )<  \, R, \forall n  \right \} \# _{min}   &   \\   
+0 & caso \, contr\acute{a}rio
+\label{objetodeinteresse}
+\end{matrix}\right.
+\end{equation}
+
+
+
+
+
+
+
+
+\begin{figure}[!htb]
+	%\captionsetup{width=0.97\textwidth}
+	\caption[Ranking categoria baseline]{Ranking de acordo com o F-Measure da categoria baseline do conjunto de dados 2012.}
+	\label{static1}
+	\fbox{\begin{minipage}{1.0\linewidth}\centering
+			\includegraphics[width=1.0\textwidth]{./figuras/resultadochange.JPG} \end{minipage}}% <- formatos PNG, JPG e PDF
+	\fonte{changedetection.net}
+\end{figure}
+
+\subsection{Dataset escolhido: CDnet dataset 2012}
+
+Em 2012 no \sigla{CPVRW}{Computer Vision and Pattern Recognition Workshops} on Change Detection (em português ``Seminário de Visão Computacional e Reconhecimento de Padrões em detecção de mudanças'') foi introduzido um método de análise de performance (\textit{benchmark}) que diferentemente de seus predecessores, proveu uma grande variedade de cenários de segmentação ocorrendo em condições realistas com um conjunto de dados \textit{groundtruth} preciso \cite{goyette2012changedetection}.
+
+Este conjunto de dado possui 6 categorias, sendo elas: 
+
+\begin{itemize}
+	\item \textit{Baseline}: esta categoria contém uma mistura de vídeos das outras categorias do conjunto de dados, com exceção da categoria ``thermal" que possui vídeos capturados com câmeras com tecnologia infravermelho. 
+	\item \textit{Dynamic Background}: categoria com vídeos em  que o fundo possui constante movimento. Exemplo: carros passando perto de fontes de água, barcos no mar, etc.
+	\item \textit{Camera Jitter}: categoria com imagens capturadas em ambientes internos e externos com câmeras instáveis. 
+	\item \textit{Intermittent Object Motion}: categoria com vídeos em cenários conhecidos por causar o efeito de \textit{ghosting}, isto é, vídeos em que o objeto de interesse está em movimento, para subitamente e volta a entrar em movimento. 
+	\item \textit{Shadows}: categoria com imagens capturadas em ambientes fechados e abertos nos quais há a presença de sombras.
+	\item \textit{Thermal}: categoria que possui vídeos capturados com câmeras com tecnologia infravermelho.  
+\end{itemize}
+
+O conjunto de dados completo possui 31 vídeos capturados por câmeras e mais de 70.000 \textit{frames}. Após uma análise, optou-se por utilizar a categoria \textit{baseline} pelo motivo da mesma ser um compilado dos desafios encontrados nas outras. Esta categoria contém 4 vídeos, totalizando 6049 \textit{frames}. Exemplos de cada vídeo podem ser observados nas imagens \ref{dataset20121} e \ref{dataset20122}.
+
+\newpage
+
+\begin{figure}[!htb]
+	\centering
+	%\begin{measuredfigure}
+	\caption{Imagens dos vídeos \textit{Highway} e \textit{Pedestrians}.\label{dataset20121}}
+	\includegraphics[height=5cm]{./figuras/highway1.jpg} \quad
+	\includegraphics[height=5cm]{./figuras/pedestrians1.jpg}\newline
+	\fonte{changedetection.net}
+	%\end{measuredfigure}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	%\begin{measuredfigure}
+	\caption{Imagens dos vídeos \textit{PETS2006} e \textit{office}.\label{dataset20122}}
+	\includegraphics[height=5cm]{./figuras/pet2006.jpg} \quad
+	\includegraphics[height=5cm]{./figuras/office1.jpg}\newline
+	\fonte{changedetection.net}
+	%\end{measuredfigure}
+\end{figure}
+
+
+\section{Trabalhos Relacionados}\label{sec:trabrel}
+
+
+Desempenho de algoritmos de extração de elementos de interesse em imagens de alta resolução não é algo muito abordado pelos trabalhos presentes na literatura, uma vez que a disponibilidade de câmeras capazes de capturar imagens com tais resoluções, é algo recente \cite{alshehhi2017hierarchical}. 
+
+No trabalho de \citeonline{alshehhi2017hierarchical}, imagens de alta resolução foram utilizadas para avaliar o desempenho do método proposto, que tem como objetivo a extração de malhas rodoviárias localizadas dentro de perímetros urbanos. Métodos desse tipo são utilizados em aplicações como os sistemas de navegação. Uma vez que oo grande desafio desses algoritmos é diferenciar os limites de uma via urbana do seu plano de fundo, imagens com resoluções maiores são mais recomendadas, pois nelas os limites são mais perceptíveis.
+
+Entre os trabalhos focados em segmentação de elemento de interesse, pode-se destacar o apresentado por \citeonline{Charles2015} em que a segmentação se baseia em características temporais, além das informações espaciais de cores, para detectar alterações em quadros consecutivos que permitam identicar o elemento de interesse. O algoritmo tem como principal contribuição a extração correta do elemento de interesse mesmo quando este mostra-se camuflado com objetos do fundo. Ajustes dinâmicos de parâmetros são realizados quadro a quadro, considerando o contexto em que se encontram e operações de baixo nível são aplicadas para eliminar ruídos.
+
+\citeonline{BGSLIBRARY} além da compilação em um único \textit{framework} de vários algoritmos encontrados na literatura, contribuiu com um teste de performance dos algoritmos implementados. A figura \ref{sobralperformance} mostra os valores de CPU, memória consumida e tempo de execução de cada um dos 26 algoritmos originalmente implementados.
+
+\begin{figure}[!htb]
+	%\captionsetup{width=0.97\textwidth}
+	\caption[Performance dos algoritmos da BGSLIBRARY]{Teste de performance dos algoritmos encontrados na BGSLIBRARY.}
+	\label{sobralperformance}
+	\fbox{\begin{minipage}{1.0\linewidth}\centering
+			\includegraphics[width=1.0\textwidth]{./figuras/sobralperformance.png} \end{minipage}}% <- formatos PNG, JPG e PDF
+	\fonte{\cite{BGSLIBRARY}}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

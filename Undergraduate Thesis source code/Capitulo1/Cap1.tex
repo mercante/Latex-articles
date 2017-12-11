@@ -1,0 +1,44 @@
+%---------- Primeiro Capitulo ----------
+\chapter{Introdução}
+
+Sistemas computacionais de segurança se tornaram uma ferramenta muito utilizada, seja em ambientes domésticos, comerciais ou industriais. A análise das imagens de vídeos, muitas vezes realizada em tempo real, capturadas nesses espaços pode aumentar a segurança, detectando comportamentos anormais, quedas de pessoas, acidentes automobilísticos etc~\cite{Sobral20144}. A aplicação de técnicas visão computacional para a extração de elementos de interesse do conteúdo dos quadros desses vídeos é uma tarefa necessária nessas aplicações~\cite{toyama1999wallflower}. 
+
+%A extração de elementos de interesse com o uso de câmeras de segurança tem sido estudado extensamente desde o início dos anos 90, já que através das imagens capturadas é possível detectar pessoas, veículos, animais, etc. Após detectado, o elemento de interesse pode ser analisado em operações mais complexas, como: detecção de invasão, rastreamento de foragidos, contagem de pessoas ou até mesmo se algum acidente aconteceu \cite{Sobral20144}.
+
+Outros exemplos de aplicações que exigem extração de elementos de interesse são os sistemas de videoconferências com substituição de fundo, Realidade Aumentada, além de substituição de fundo em aplicações como na previsão do tempo em telejornais. Nestas aplica\-çõ\-es, no entanto, o ambiente geralmente é controlado, pois possui iluminação constante, fundo monocromático e nenhuma movimentação dos demais elementos que compõem a cena. %Neste trabalho
+
+Nas aplicações voltadas para segurança por vídeo, o fundo da cena é arbitrário e, em consequência disso, a extração dos elementos de interesse deve ser realizada por algoritmos que atuem nessas condições. Algoritmos desse tipo se apoiam em informações como contraste entre \textit{pixels} vizinhos e coerência temporal entre quadros consecutivos. Algumas abordagens consideram, inclusive, o conhecimento prévio da forma do elemento de interesse para identificar os \textit{pixels} que pertencem ao fundo e os que pertencem ao próprio elemento.
+
+
+O objetivo deste trabalho de conclusão de curso é analisar a relação performance x recurso computacional em imagens de alta resolução. Para isto foi escolhido um algoritmo ranqueado no site changedetection\footnote{Changedetection.net}, site este dedicado à ranquear algoritmos que lidam com processamento de imagem. 
+
+Como imagens de alta resolução sendo cada vez mais acessíveis, a avaliação consiste em prover um estudo que relate qual é a relação entre ``desempenho do algoritmo x resolução da imagem x custo computacional''. 
+
+
+\section{Motiva\c{c}\~ao}
+
+A extração de elementos de interesse, em tempo real, de quadros de vídeos é uma tarefa necessária para um número significativo de aplicações, muitas delas voltadas para segurança por vídeo. Os algoritmos mais robustos encontrados na literatura utilizam vários tipos de informações, como cor, contraste e coerência temporal entre quadros consecutivos para estimar se o pixel processado pertence ao elemento de interesse ou ao fundo. Algumas abordagens consideram, inclusive, o conhecimento prévio da forma do elemento a ser extraído ou valores de profundidade de pixels (obtidas de sensores) para auxiliar a segmentação.
+
+Conjuntos de dados disponíveis online\footnote{Changedetection.net} utilizam imagens capturadas por câmeras de baixa resolução, porém oferecem uma boa variedade de cenários que simulam aplicações em situações reais. Porém, visto que câmeras capazes de capturar imagens em alta resolução vem se popularizando, se mostra relevante o estudo de se a resolução impacta no desempenho do algoritmo, e ainda mais, se o resultado final justifica o custo computacional adicional requerido.
+
+\section{Objetivos}
+
+Os objetivos da presente pesquisa são apresentados em duas subseções. A primeira delas traz o objetivo geral do trabalho e a segunda detalha as metas a serem atingidas (objetivos específicos) para que tal objetivo seja alcançado.
+
+\subsection{Objetivo Geral}
+
+O objetivo deste presente trabalho é verificar se ao processar um vídeo, em várias resoluções, há ganho na acurácia da extração do objeto de interesse em imagens de alta resolução, e caso houver, se este ganho justifique o custo computacional adicional de processamento. 
+
+
+\subsection{Objetivos Espec\'ificos}
+
+\begin{itemize}
+	\item Reproduzir as métricas obtidas por um algoritmo de alto desempenho em uma categoria que contenha cenários típicos observados por câmeras de segurança. Esta reprodução é necessária para que se tenha uma base que o algoritmo possui o mesmo desempenho encontrado na literatura.
+	\item Aplicar o algoritmo escolhido num conjunto de dados de resoluções variadas gerado a partir de um vídeo gravado em resolução 4k $(3840 × 2160)$.
+	\item Medir o desempenho do algoritmo e o custo computacional do algoritmo para cada resolução. 
+\end{itemize}
+
+
+\section{Organização do Texto}
+
+Este trabalho de conclusão de curso está organizado da seguinte forma. No capítulo~\ref{chap:fundamentacao} são apresentados os principais conceitos sobre extração de elementos de interesse, seguidos de uma discussão sobre os métodos de extração de elementos de interesse que representam o estado da arte, e por fim uma explanação do algoritmo escolhido e o dataset utilizado. O capítulo \ref{Cap3} contém os recursos utilizados para a realização deste estudo, se tratando de software e hardware, bem como qual foi o procedimento para mensurar as métricas e os recursos computacionais gastos. No capítulo \ref{cap4} é dedicado a uma análise dos resultados obtidos. Por fim o capítulo \ref{cap5} é apresentada a conclusão do trabalho.

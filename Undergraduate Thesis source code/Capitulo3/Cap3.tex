@@ -1,0 +1,173 @@
+%---------- Terceiro Capitulo ----------
+\chapter{Materiais e Métodos}
+\label{Cap3}
+
+Neste capítulo serão listadas as ferramentas utilizadas e os métodos adotados. 
+
+\section{Ferramentas}
+
+Para a execução destre trabalho, os seguintes itens foram utilizados:
+
+\begin{itemize}
+	\item IDE com suporte a C++, CodeBlocks versão 16.01.
+	\item MATLAB 2013.
+	\item Ferramenta Monitor de Desempenho do Windows 10.
+	\item Conjunto de dados CDnet 2012.
+	\item Câmera para captura de vídeo 4k (3840 x 2160 pixels).
+%	\item Vídeo capturado em resolução 4k (3840 x 2160 pixels).
+\end{itemize}
+
+A IDE CodeBlocks foi utilizada para execução do algoritmo SubSENSE obtida na BGSLIBRARY
+
+Foi utilizado um computador com um processador Intel i5 de 2.6 GHz, 8 GB de memória RAM, 1 TB de armazenamento e sistema operacional Windows 10.
+
+\section{Algoritmo utilizado: SubSENSE}
+
+A implementação utilizada do método de extração de elementos de interesse SubSENSE está disponível online, como parte do \textit{framework} BGSLIBRARY\footnote{https://github.com/andrewssobral/bgslibrary/}. Algumas alterações no código C++ foram feitas, para facilitar o \textit{input} de tipos diferentes de arquivos, conforme o necessário. Todos os códigos utilizados neste trabalho, estão disponíveis no GitHub\footnote{https://github.com/mercante/subsense4k}. 
+
+Para um teste inicial, de forma a garantir que o algoritmo tenha a mesma acurácia obtida na literatura, foi o mesmo foi executado no \textit{dataset} CDnet 2012. Conforme explicado na seção \ref{chap:fundamentacao}, foram utilizadas as imagens da categoria baseline, obtendo-se máscaras que representam as regiões da imagem em que o objeto de interesse se encontram. 
+
+No site changedetection.net está disponível um \textit{script} de MATLAB para calcular as métricas que avaliam o desempenho dos algoritmos, uma parte do algoritmo está mostrada no algoritmo \ref{alg:codigomatlab}. 
+
+\newpage
+
+\lstinputlisting[float=!htb,caption={Trecho de código que calcula as métricas},label=alg:codigomatlab,language=Matlab]{./Capitulo3/exemplo.m}
+
+As métricas são calculadas a partir das seguintes observações obtidas da comparação da máscara gerada com o \textit{groundtruth} presente no \textit{dataset}:
+
+\begin{itemize}
+	\item TP: True Positive (positivo verdadeiro), pixel presente no objeto de interesse e classificado como tal.
+	\item FP: False Positive (positivo falso), pixel não presente no objeto de interesse e classificado como tal.
+	\item FN: False Negative (falso negativo), pixel presente no objeto de interesse e não classificado como tal.
+	\item TN: True Negative (negativo verdadeiro), pixel não presente no objeto de interesse e classificado como tal. 
+\end{itemize}
+As métricas são definidas pelas seguintes equações utilizando as observações anteriormente listadas:
+\begin{itemize}
+	\item \textit{Recall}: 
+\end{itemize}
+	\begin{equation}
+	Re = \tfrac{TP}{TP+FN}
+	\label{re}
+	\end{equation}
+\begin{itemize}
+	\item \textit{Specificity}:
+\end{itemize}
+	\begin{equation}
+	Sp = \tfrac{TN}{TN+FP}
+	\label{Specificity}
+	\end{equation}
+\begin{itemize}
+	\item \sigla{FPR}{False Positive Rate}:
+\end{itemize}
+	\begin{equation}
+	FPR = \tfrac{FP}{FP+TN}
+	\label{FPR}
+	\end{equation}
+\begin{itemize}
+	\item \sigla{FNR}{False Negative Rate}: 
+\end{itemize}
+\begin{equation}
+FNR=\tfrac{FN}{TP+FN}
+\label{FNR}
+\end{equation}
+\begin{itemize}
+	\item \sigla{PWC}{Porcentage of Wrong Classifications}: 
+\end{itemize}
+\begin{equation}
+PWC = 100 \ast \tfrac{FN+FP}{TP+FN+FP+TN}
+\label{PWC}
+\end{equation}
+\begin{itemize}
+	\item Precision:
+\end{itemize}
+\begin{equation}
+Precision = \tfrac{TP}{TP+FP}
+\label{Pr}
+\end{equation}
+
+\begin{itemize}
+\item F-Measure:
+\end{itemize}
+
+\begin{equation}
+FMeasure = \frac{2\ast Precision\ast Recall}{Precision\, +\, Recall }
+\label{Fmeasure}
+\end{equation}
+
+O quadro \ref{metricasbaseline} apresenta os resultados obtidos utilizando algoritmo SubSENSE e o \textit{script} disponível no site changedetection.net. 
+
+\begin{quadro}[!htb]
+	\centering
+	\caption{Métricas do dataset CDnet 2012 categoria Baseline}
+	\label{metricasbaseline}
+	\begin{tabular}{|c|c|c|c|c|c|c|c|}
+		\hline
+		\textbf{Dataset} & \textbf{Recall} & \textbf{Specificity} & \textbf{FPR} & \textbf{FNR} & \textbf{PWC} & \textbf{Precision} & \textbf{FMeasure} \\ \hline
+		Baseline       & 0.9529          & 0.9981               & 0.0018       & 0.0470       & 0.3586       & 0.9484             & 0.9503            \\ \hline
+	\end{tabular}
+	\fonte{Autoria própria}
+\end{quadro}
+
+Como podemos ver na figura \ref{baselinefoto}, retirada do próprio site changedetection.net os valores obtidos correspondem aos encontrados na literatura.
+
+\begin{figure}[!htb]
+	%\captionsetup{width=0.97\textwidth}
+	\caption[Resultado CDnet 2012]{Resultado da categoria baseline listados do maior F-Measure para o menor.}
+	\label{baselinefoto}
+	\fbox{\begin{minipage}{1.0\linewidth}\centering
+			\includegraphics[width=1.0\textwidth]{./figuras/resultadochange.JPG} \end{minipage}}% <- formatos PNG, JPG e PDF
+	\fonte{changedetection.net}
+\end{figure}
+
+\newpage
+
+\section{Método utilizado para o teste de performance em imagens de alta resolução}
+
+Para o desenvolvimento deste trabalho, foi gravado um vídeo de aproximadamente 17 segundos em resolução 4k (3840 x 2160). Este vídeo foi gravado utilizando um celular chamado ``Moto Z Play''. A partir deste vídeo, foi criado um \textit{dataset} chamado de ``Cornélio4k'', que é composto pelos \textit{frames} do vídeo em sua resolução original e outras 9 obtidas através da função de redimensionamento textit{imresize} que utiliza interpolação de proximidade. Todas resoluções foram geradas de modo a se manter o aspecto 16:9. Também parte do \textit{dataset}, está presente um \textit{groundtruth} utilizado para a avaliação da segmentação. As resoluções disponíveis deste \textit{dataset} estão mostradas no quadro \ref{quad:modelo4k}.
+
+\begin{quadro}[!htb]
+	\caption{Quadro das resoluções dos vídeos utilizados no teste de performance}\label{quad:modelo4k}
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Vídeo} & \textbf{Resolução}\\
+		\hline
+		\multicolumn{1}{|l|}{Cornelio384} & 384 x 216\\
+		\hline
+		\multicolumn{1}{|l|}{Cornelio768} & 768 x 432 \\
+		\hline
+		\multicolumn{1}{|l|}{Cornelio1152} & 1152 x 648 \\
+		\hline
+		\multicolumn{1}{|l|}{Cornelio1536} & 1536 x 864 \\
+		\hline
+		\multicolumn{1}{|l|}{Cornelio1920} & 1920 x 1080 \\
+		\hline
+		\multicolumn{1}{|l|}{Cornelio2304} & 2304 x 1296 \\
+		\hline
+		\multicolumn{1}{|l|}{Cornelio2688} & 2688 x 1512 \\
+		\hline
+		\multicolumn{1}{|l|}{Cornelio3072} & 3072 x 1728 \\
+		\hline
+		\multicolumn{1}{|l|}{Cornelio3456} & 3456 x 1944 \\
+		\hline
+		\multicolumn{1}{|l|}{Cornelio3840} & 3840 x 2160 \\
+		\hline
+	\end{tabular}
+	\fonte{Autoria própria}
+\end{quadro}
+
+Durante a execução do algoritmo, com o auxílio da ferramenta ``Monitor de Performance'' do Windows, foram monitorados as seguintes variáveis: 
+
+\begin{itemize}
+	\item ``Tempo de execução'': se trata do tempo total transcorrido, em segundos, desde o início da execução do processo.
+	\item ``Memória RAM'':  é o tamanho em \textit{bytes}, da memória alocada pelo processo que não pode ser compartilhada com outros processos.
+	\item ``\% tempo do processador'': é a porcentagem de tempo decorrido em que todos os \textit{threads} de processo usaram o processador para executar instruções. Uma instrução é a unidade básica de execução em um computador, um \textit{thread} é o objeto que executa instruções e um processo é o objeto criado quando um programa é executado. O código executado para lidar com algumas interrupções de hardware e condições de desvio é incluído nessa contagem.
+\end{itemize}
+
+Os resultados obtidos são discutidos no capítulo \ref{cap4}.
+
+Por fim, utilizando o \textit{script} do MATLAB de obtenção de métricas anteriormente mencionado, foi calculada a acurácia da segmentação em todas as resoluções para poder ser feita uma análise de como a resolução está relacionada com a eficácia da segmentação, e se este aumento de acurácia, caso exista, justifica o custo computacional adicional.
+
+
+
+

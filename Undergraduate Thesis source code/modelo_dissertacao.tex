@@ -1,0 +1,262 @@
+%% Exemplo de Utilizacao do Estilo de formatacao utfprcptex2  (http: )
+%% para elaboração de Teses, Dissertações, etc...
+%% Autores: Rodrigo Rodrigues Sumar (sumar@utfpr.edu.br)
+%%          Bruno Augusto Angélico (bangelico@utfpr.edu.br)
+%% Colaboradores:
+%%
+%%
+\documentclass[oneside,       % para impressão somente na frante. Oposto a twoside
+               openright,     % capítulos começam em pág ímpar (insere página vazia caso preciso)
+               a4paper,       % tamanho do papel.
+               12pt,          % tamanho da fonte
+               english,		  % idioma adicional para hifenização
+%               french,		  % idioma adicional para hifenização
+               spanish,		  % idioma adicional para hifenização
+               brazil		  % o último idioma é o principal do documento
+              ]{utfprcptex2}
+
+% ------
+%%% Pacotes diversos
+% ------
+\usepackage[brazil]{babel} % pacote portugues brasileiro
+\usepackage[latin1]{inputenc} % pacote para acentuacao direta
+\usepackage{amsmath,amsfonts,amssymb,amsthm} % pacote matematico
+\usepackage{graphicx} % pacote grafico
+\usepackage[bottom]{footmisc}
+\usepackage{subfig}
+\usepackage{threeparttable}
+\usepackage[T1]{fontenc}
+
+
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+\DisemulatePackage{index}
+\DisemulatePackage{setspace}
+\DisemulatePackage{tocstyle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ambientes para definições, exemplos e teoremas
+\newtheorem{problema}{Problema}
+\newtheorem{definicao}{Definição}
+\newtheorem{proposicao}{Proposição}
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem{lema}{Lema}
+\newtheorem{corolario}{Corolário}
+\newtheorem{exemplo}{Exemplo}
+\newtheorem*{observacao}{Observação}
+\newenvironment{prova}
+{\noindent {\textit{Demonstração}.}} {{\par\hfill$\Box$ \\}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Para fonte Times (Nimbus Roman) descomente linha abaixo
+%\fontetipo{times}
+
+% Para fonte Helvetica (Nimbus Sans) descomente linhas abaixo
+\fontetipo{arial}
+
+%O comando a seguir diz ao Latex para salvar as siglas em um arquivo separado:
+\fazlistasiglas[Lista de Siglas] % Parâmetro opcional é o título da lista.
+
+%%%% Ferramenta para criação de glossários
+\makeglossaries%% Não comente esta linha se estivar usando glossario
+\include{entradas_glossario}%% Entradas do glossário - Comente para remover este item
+%%%%
+
+% ---------- Preambulo ----------
+%%%%%%%% Dados para Capa e outros elementos pretextuais
+\instituicao{Universidade Tecnol\'ogica Federal do Paran\'a}
+\unidade{Câmpus Cornélio Procópio}
+\diretoria{Diretoria de Graduação e Educação Profissional}
+\coordenacao{Departamento de Computação}
+\curso{Engenharia de Computação}
+\documento{Trabalho de Conclusão de Curso}
+\nivel{Bacharelado}
+\titulacao{Bacharel}
+\area{Engenharia de Computação}
+\titulo{Estudo do impacto da resolução de imagens e custo computacional na segmentação de vídeos} % titulo do trabalho em português
+\title{Study of the impact of image resolution and computational cost on video segmentation} % titulo do trabalho em inglês
+\autor{Mike Patrick Mercante} % autor do trabalho
+\cita{MERCANTE, Mike Patrick} % sobrenome (maiúsculas), nome do autor do trabalho
+
+\palavraschave{Alta resolução. Segmentação de video. Custo computacional.} % palavras-chave do trabalho - Devem ser inseridas de 3 a 5 palavras chave
+\keywords{High Resolution. Video Segmentation. Computacional cost.} % palavras-chave do trabalho em inglês - Devem ser inseridas de 3 a 5 palavras chave
+\comentario{Trabalho de Conclusão de Curso apresentado ao Programa de Graduação em Engenharia de Computação da \UTFPRinstituicaodata\ como requisito parcial para obten\c{c}\~ao do título de ``\UTFPRtitulacaodata\ em \UTFPRareadata''.}
+
+
+%%%%%%%%%% Dados de Orientador e Coorientador
+\orientador[Orientador]{Prof. Dr.}{Silvio R. R. Sanches} % nome do orientador do trabalho
+%\orientador[Orientadora:]{Nome da Orientadora} % <- no caso de orientadora, usar esta sintaxe
+%\coorientador{Nome do Co-orientador} % nome do co-orientador do trabalho, caso exista
+%\coorientador[Co-orientadora]{Profa. Dra.}{Nome da Co-orientadora} % <- no caso de co-orientadora, usar esta sintaxe
+%\coorientador[Co-orientadores:]{Nome do Co-orientador} % no caso de 2 co-orientadores, usar esta sintaxe
+%\coorientadorb{}	% este comando inclui o nome do 2o co-orientador
+
+%\coordenadorUTFPR[Coordenadora]{Grau}{Nome do coordenador} % Coordenador do PPGEEL
+\local{Cornélio Procópio} % cidade
+\data{2017} % Aqui deve ir o ano da defesa.
+
+%%%% Dados para Folha de Aprovação%
+\textoaprovacao{Esta \UTFPRdocumentodata\ foi julgada adequada para obten\c c\~ao do T\'itulo de ``\UTFPRtitulacaodata\ em \UTFPRareadata'' e aprovado em sua forma final pelo \UTFPRcoordenacaodata\ da \UTFPRinstituicaodata.}
+\numerodemembrosnabanca{2} % Isso decide se a lista de assinaturas será colocada em duas colunas
+\orientadornabanca{sim} % Se faz parte da banca definir como sim
+\coorientadornabanca{nao} % Se faz parte da banca definir como sim
+\primeiroassina[Prof. Dr \\ Universidade Tecnológica Federal do Paraná]{Fabrício Martins Lopes}
+\segundoassina[Prof. Dr. \\Universidade Tecnológica Federal do Paraná]{Roberto Sadao Yokoyama}
+%\terceiroassina[Título \\Universidade]{Terceiro Membro da Banca}
+%\quartoassina[Título \\Universidade]{Quarto Membro da Banca}
+%\quintoassina[Título \\Universidade]{Quinto Membro da Banca}
+%\sextoassina[Título \\Universidade]{Sexto Membro da Banca}
+%\setimoassina[Título \\Universidade]{Sétimo Membro da Banca}
+\datadefesaUTFPR{21}{11}{2017} %% A data deve ser inserida no formato dd/mm/aaaa
+%%%%% Comentar para versao impressa
+\versaoeletronica{``A Folha de Aprovação assinada encontra-se na Coordenação do Curso do Programa''}% Texto a ser inserido na versão eletronica do documento.
+
+%---------- Inicio do Documento ----------
+
+\begin{document}
+%\hypersetup{pageanchor=false}
+\capa % geração automática da capa
+\pretextual
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Geracao automatica da folha de rosto
+%%%% Opções da Folha de Rosto
+%%%%    - semficha
+%%%%    - comficha: modelo definido pela classe. Serve para contar paginas na
+%%%%                geração da ficha pela biblioteca.
+%%%%    - pdf: informar o nome do arquivo pdf com a ficha fornecinada
+%%%%           pela bibliteca.
+%\folhaderosto[Fichacatalografica]
+
+
+\termodeaprovacao % <- ainda a ser implementado corretamente
+
+%%% Errata
+%\include{errata}
+%%%
+
+%%%%% dedicatória (opcional)
+%\begin{dedicatoria}
+%Texto da dedicat\'oria.
+%\end{dedicatoria}
+
+%%%%%% agradecimentos (opcional)
+\begin{agradecimentos}
+Gostaria de agradecer a todos que me ensinaram algo nessa jornada única que foi a graduação. 
+
+Em especial, agradeço ao meu orientador Prof. Dr. Silvio R. R. Sanches, por sua orientação, paciência e oportunidade.
+
+Agradeço aos meus amigos e família por todo apoio, mesmo nos momentos mais difíceis. 
+E finalmente agradeço à Alessandra por todo amor, carinho e companheirismo do início ao fim.
+
+A todos, meu sincero obrigado.
+\end{agradecimentos}
+
+%%%%% epigrafe (opcional)
+%\begin{epigrafe}
+%Texto da ep\'igrafe.
+%\end{epigrafe}
+
+%%%%% resumo
+\begin{resumo}
+Na área de Visão Computacional, a segmentação de imagens para extração de elementos de interesse têm sido bastante investigada nas últimas décadas. Entre as principais aplicações podem ser citados os sistemas de videoconferência com substituição de fundo, Realidade Aumentada e de segurança por vídeo. As aplicações que tratam imagens capturadas por câmeras de segurança se destacam pela sua importância, seja em ambientes domésticos, comerciais ou industriais. Vários métodos foram desenvolvidos com o objetivo de otimizar o processo de segmentação, aumentando sua acurácia e diminuindo o tempo de processamento. Dependendo do ambiente da aplicação, determinado algoritmo pode ser mais eficiente que outro, pois podem lidar mais facilmente, por exemplo, com variações na iluminação ou com a ocorrência de sombras. O objetivo deste trabalho é realizar um estudo em imagens de resolução 4k (3840 x 2160) e resoluções intermediárias, analisando o desempenho de um algoritmo de segmentação em termos de custo computacional e acurácia. Para atingir este objetivo foi gravado um vídeo em 4k de uma cena típica de cenários de segurança por vídeo, processou-se essas imagens com um algoritmo escolhido de modo a ser possível serem obtidas métricas de acurácia e desempenho em relação ao custo computacional gasto.
+\end{resumo}
+%
+%%%%% abstract em ingles
+\begin{abstract}
+MERCANTE, Mike Patrick. \textbf{\UTFPRtitledata.} \UTFPRanodefesa. \pageref{LastPage} f. Undergraduate Thesis -- Computer Engineering, Federal University of Technology - Paraná. Cornélio Procópio, \UTFPRdatadata.
+
+
+In the area of Computational Vision, the segmentation of images to extract elements of interest have been extensively researched. Among the various applications, videoconference systems, Augmented Reality and background substitution in a scene can be mentioned. However, applications that treat images captured by security cameras stand out for their importance, whether in domestic, commercial or industrial environments. Over time, several methods have been developed with the objective of optimizing the segmentation process, increasing its accuracy and reducing processing time. Depending on the type of application, whether indoors or outdoors, with light variance or not, a method is most recommended. The objective of this work is to perform a study on 4k resolution images (3840 x 2160) and intermediate resolutions, analyzing the performance of an object segmentation algorithm of interest in terms of computational cost and accuracy. To achieve this goal a 4k video of a typical scene of video security scenarios was recorded, these images were processed with a chosen algorithm in order to be able to obtain metrics of accuracy and performance in relation to the computational cost spent.
+
+\textbf{Keywords:} \UTFPRkeywordsdata
+\end{abstract}
+
+%%%%% abstract em frances
+%\begin{resume}
+%SOBRENOME, Nome. \textbf{Titre Français.} \UTFPRanodefesa. \pageref{LastPage} f. Mémoire de Maîtrise -- Programme d'études Supérieures en Génie Électrique, Université Technologique Fédérale - Paraná. Cornélio Procópio, \UTFPRdatadata.
+
+%Il s'agit d'un résumé en français. (maximum de 500 mots).
+
+%\textbf{Mots-clés:} mot-clé 1. mot-clé 2. (3 à 5 mots)
+%\end{resume}
+
+%%%%%% Lista de Ilustrações conforme ABNT
+%\listadeilustracoes
+%%% Para Gera lista individuais de comentar o comando acima e
+%%% descomentar das listas individuais
+%%%%%%%%%%%
+%%%% listas (opcionais, mas recomenda-se a partir de 5 elementos)
+%%%%
+\listadefiguras % geração automática da lista de figuras
+%\listadetabelas % geração automática da lista de tabelas
+\listadequadros % geração automática da lista de quadros
+%\listadegraficos % geração automática da lista de gráficos
+%\listadefotos % geração automática da lista de fotos
+%\listadefluxogramas % geração automática da lista de fluxogramas
+%\listadesiglas  % geração automática da lista de siglas
+%\listadeabreviaturas  % geração automática da lista de abreviaturas
+%\listadeacronimos   % geração automática da lista de acrônimos
+%listadesimbolos % geração automática da lista de símbolos
+
+\listofalgorithms %%%%% EM FASE DE TESTES
+
+% sumario
+\sumario % geração automática do sumario
+
+%\cleardoublepage
+%\hypersetup{pageanchor=true}
+\textual
+
+%---------- Inicio do Texto ----------
+% recomenda-se a escrita de cada capitulo em um arquivo texto separado (exemplo: intro.tex, fund.tex, exper.tex, concl.tex, etc.) e a posterior inclusao dos mesmos no mestre do documento utilizando o comando \input{}, da seguinte forma:
+\input{Capitulo1/Cap1.tex}
+\input{Capitulo2/Cap2.tex}
+\input{Capitulo3/Cap3.tex}
+\input{Capitulo4/Cap4.tex}
+\input{Capitulo5/Cap5.tex}
+
+
+%% Formatação de páginas de elementos pós-textuais
+\postextual%% Não comente esta linha
+%---------- Referencias ----------
+\bibliography{Referencias/referencias} % geracao automatica das referencias a partir do arquivo reflatex.bib
+
+%% Glossário
+%\incluirglossario%% Comente para remover este item
+
+%---------- Apendices (opcionais) ----------
+%\apendices
+% Imprime uma página indicando o início dos apêndices
+%\partapendices*
+
+%\chapter{Nome do Ap\^endice}
+
+%Use o comando {\ttfamily \textbackslash apendice} e depois comandos {\ttfamily \textbackslash chapter\{\}}
+%para gerar t\'itulos de ap\^en-dices.
+
+%\section{Teste de Seção em um Apêndice}
+
+% ---------- Anexos (opcionais) ----------
+%\anexos
+% Imprime uma página indicando o início dos anexos
+%\partanexos*
+
+
+
+%\chapter{Nome do Anexo}
+
+%\index{Use} Use o comando {\ttfamily \textbackslash anexo} e depois comandos {\ttfamily \textbackslash chapter\{\}}
+%para gerar t\'itulos de anexos.
+
+%---------------------------------------------------------------------
+% INDICE REMISSIVO
+%---------------------------------------------------------------------
+%\onecolindex %% Para indice em uma coluna
+\twocolindex  %% Para indice em duas colunas
+\indiceremissivo
+%---------------------------------------------------------------------
+
+\end{document} 

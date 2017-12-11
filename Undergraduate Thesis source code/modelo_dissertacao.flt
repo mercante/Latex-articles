@@ -1,0 +1,25 @@
+\contentsline {figure}{\numberline {1}{\ignorespaces Vis\~ao Computacional}}{13}{figure.caption.17}
+\contentsline {figure}{\numberline {2}{\ignorespaces Exemplo Chromakey}}{14}{figure.caption.18}
+\contentsline {figure}{\numberline {3}{\ignorespaces Aplica\c c\~ao de seguran\c ca por v\IeC {\'\i }deo}}{15}{figure.caption.19}
+\contentsline {figure}{\numberline {4}{\ignorespaces Processamento de imagem}}{16}{figure.caption.20}
+\contentsline {figure}{\numberline {5}{\ignorespaces Classifica\c c\~ao LBSP}}{17}{figure.caption.21}
+\contentsline {figure}{\numberline {6}{\ignorespaces Ranking categoria baseline}}{18}{figure.caption.22}
+\contentsline {figure}{\numberline {7}{\ignorespaces Imagens dos v\IeC {\'\i }deos \textit {Highway} e \textit {Pedestrians}.\relax }}{20}{figure.caption.23}
+\contentsline {figure}{\numberline {8}{\ignorespaces Imagens dos v\IeC {\'\i }deos \textit {PETS2006} e \textit {office}.\relax }}{20}{figure.caption.24}
+\contentsline {figure}{\numberline {9}{\ignorespaces Performance dos algoritmos da BGSLIBRARY}}{21}{figure.caption.25}
+\contentsline {quadro}{\numberline {1}{\ignorespaces M\'etricas do dataset CDnet 2012 categoria Baseline\relax }}{24}{quadro.caption.27}
+\contentsline {figure}{\numberline {10}{\ignorespaces Resultado CDnet 2012}}{25}{figure.caption.28}
+\contentsline {quadro}{\numberline {2}{\ignorespaces Quadro das resolu\c c\~oes dos v\IeC {\'\i }deos utilizados no teste de performance\relax }}{25}{quadro.caption.29}
+\contentsline {figure}{\numberline {11}{\ignorespaces Resultado da segmenta\c c\~ao utilizando o algoritmo SubSENSE - 1.\relax }}{27}{figure.caption.30}
+\contentsline {figure}{\numberline {12}{\ignorespaces Resultado da segmenta\c c\~ao utilizando o algoritmo SubSENSE - 2.\relax }}{27}{figure.caption.31}
+\contentsline {figure}{\numberline {13}{\ignorespaces Resultado da segmenta\c c\~ao utilizando o algoritmo SubSENSE - 3.\relax }}{28}{figure.caption.32}
+\contentsline {figure}{\numberline {14}{\ignorespaces Resultado da segmenta\c c\~ao e seu \textit {groundtruth} correspondente.\relax }}{28}{figure.caption.33}
+\contentsline {quadro}{\numberline {3}{\ignorespaces M\'etricas do dataset Cornelio4k\relax }}{28}{quadro.caption.34}
+\contentsline {quadro}{\numberline {4}{\ignorespaces Valores do teste de performance\relax }}{29}{quadro.caption.35}
+\contentsline {quadro}{\numberline {5}{\ignorespaces Valores em porcentagem da raz\~ao de uma resolu\c c\~ao em rela\c c\~ao \`a sua anterior \relax }}{29}{quadro.caption.36}
+\contentsline {figure}{\numberline {15}{\ignorespaces Gr\'afico performance total}}{30}{figure.caption.37}
+\contentsline {quadro}{\numberline {6}{\ignorespaces M\'etricas por resolu\c c\~ao\relax }}{30}{quadro.caption.38}
+\contentsline {quadro}{\numberline {7}{\ignorespaces Raz\~ao das m\'etricas por resolu\c c\~ao\relax }}{31}{quadro.caption.39}
+\contentsline {figure}{\numberline {16}{\ignorespaces Gr\'afico performance mem\'oria}}{31}{figure.caption.40}
+\contentsline {figure}{\numberline {17}{\ignorespaces Gr\'afico performance cpu}}{32}{figure.caption.41}
+\contentsline {figure}{\numberline {18}{\ignorespaces Gr\'afico performance cpu}}{32}{figure.caption.42}
